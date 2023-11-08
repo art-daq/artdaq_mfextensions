@@ -20,6 +20,7 @@ old_style_config_vars
 
 #
 product			version		optional
+messagefacility	v2_10_03	s126
 messagefacility	v2_10_02	s124
 messagefacility	v2_10_01	s123
 messagefacility	v2_09_00	s120a
@@ -34,6 +35,15 @@ end_product_list
 # -nq- means there is no qualifier
 # a "-" means the dependent product is not required by the parent and will not be setup
 qualifier		messagefacility	qt	TRACE	notes
+c14:s126:debug	c14:debug		c14	-nq-	-std=c++17
+c14:s126:prof	c14:prof		c14	-nq-	-std=c++17
+e20:s126:debug	e20:debug		e20	-nq-	-std=c++17
+e20:s126:prof	e20:prof		e20	-nq-	-std=c++17
+e26:s126:debug	e26:debug		e26	-nq-	-std=c++17
+e26:s126:prof	e26:prof		e26	-nq-	-std=c++17
+e28:s126:debug	e28:debug		e28	-nq-	-std=c++20
+e28:s126:prof	e28:prof		e28	-nq-	-std=c++20
+
 c14:s124:debug	c14:debug		c14	-nq-	-std=c++17
 c14:s124:prof	c14:prof		c14	-nq-	-std=c++17
 c15:s124:debug	c15:debug		c15	-nq-	-std=c++17
