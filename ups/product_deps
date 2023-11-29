@@ -28,7 +28,7 @@ messagefacility	v2_09_00	s120
 messagefacility	v2_08_04	s112
 qt				v5_15_9a
 TRACE			v3_17_09
-cetmodules		v3_21_02	-	only_for_build
+cetmodules		v3_22_02	-	only_for_build
 end_product_list
 
 # See https://cdcvs.fnal.gov/redmine/projects/cet-is-public/wiki/AboutQualifiers for information about the qualifiers used
@@ -55,15 +55,6 @@ e26:s124:prof	e26:prof		e26	-nq-	-std=c++17
 e28:s124:debug	e28:debug		e28	-nq-	-std=c++20
 e28:s124:prof	e28:prof		e28	-nq-	-std=c++20
 
-c14:s123:debug	c14:debug		c14	-nq-	-std=c++17
-c14:s123:prof	c14:prof		c14	-nq-	-std=c++17
-c15:s123:debug	c15:debug		c15	-nq-	-std=c++17
-c15:s123:prof	c15:prof		c15	-nq-	-std=c++17
-e20:s123:debug	e20:debug		e20	-nq-	-std=c++17
-e20:s123:prof	e20:prof		e20	-nq-	-std=c++17
-e26:s123:debug	e26:debug		e26	-nq-	-std=c++17
-e26:s123:prof	e26:prof		e26	-nq-	-std=c++17
-
 c7:s120a:debug	c7:debug		c7	-nq-	-std=c++17
 c7:s120a:prof	c7:prof			c7	-nq-	-std=c++17
 c14:s120a:debug	c14:debug		c14	-nq-	-std=c++17
@@ -72,15 +63,6 @@ e20:s120a:debug	e20:debug		e20	-nq-	-std=c++17
 e20:s120a:prof	e20:prof		e20	-nq-	-std=c++17
 e26:s120a:debug	e26:debug		e26	-nq-	-std=c++17
 e26:s120a:prof	e26:prof		e26	-nq-	-std=c++17
-
-c7:s120:debug	c7:debug		c7	-nq-	-std=c++17
-c7:s120:prof	c7:prof			c7	-nq-	-std=c++17
-c14:s120:debug	c14:debug		c14	-nq-	-std=c++17
-c14:s120:prof	c14:prof		c14	-nq-	-std=c++17
-e20:s120:debug	e20:debug		e20	-nq-	-std=c++17
-e20:s120:prof	e20:prof		e20	-nq-	-std=c++17
-e26:s120:debug	e26:debug		e26	-nq-	-std=c++17
-e26:s120:prof	e26:prof		e26	-nq-	-std=c++17
 
 c7:s112:debug	c7:debug		c7	-nq-	-std=c++17
 c7:s112:prof	c7:prof			c7	-nq-	-std=c++17
