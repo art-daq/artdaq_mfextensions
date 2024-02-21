@@ -3,7 +3,10 @@ file(GLOB MOCFILES ${CMAKE_CURRENT_BINARY_DIR}/moc_*.cpp)
 message(STATUS "MOCFILES=${MOCFILES}")
 file(REMOVE ${MOCFILES})
 
-cet_make(LIBRARY_NAME Components
+cet_make_library(LIBRARY_NAME Components
+  SOURCE
+  NodeInfo.cpp
+  qt_rule_engine.cpp
   LIBRARIES
   Boost::system
   Boost::thread

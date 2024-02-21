@@ -5,8 +5,12 @@ file(REMOVE ${MOCFILES})
 
 cet_register_export_set(SET_NAME PluginTypes NAMESPACE artdaq_plugin_types)
 
-cet_make(LIBRARY_NAME MFReceivers
-  EXCLUDE LogReader_receiver.cc UDP_receiver.cc
+cet_make_library(LIBRARY_NAME MFReceivers
+  SOURCE
+  makeMVReceiver.cc
+  MVReceiver.cc
+  qt_mf_msg.cc
+  ReceiverManager.cc
   LIBRARIES
   TRACE::TRACE
   Boost::regex
