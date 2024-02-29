@@ -51,8 +51,6 @@ e26:s128:prof	e26:prof		e26	-nq-	-std=c++17
 e28:s128:debug	e28:debug		e28	-nq-	-std=c++20
 e28:s128:prof	e28:prof		e28	-nq-	-std=c++20
 
-c7:s120b:debug	c7:debug		c7	-nq-	-std=c++17
-c7:s120b:prof	c7:prof			c7	-nq-	-std=c++17
 c14:s120b:debug	c14:debug		c14	-nq-	-std=c++17
 c14:s120b:prof	c14:prof		c14	-nq-	-std=c++17
 e20:s120b:debug	e20:debug		e20	-nq-	-std=c++17
