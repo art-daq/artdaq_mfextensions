@@ -25,7 +25,7 @@ messagefacility	v2_10_04	s128
 messagefacility	v2_09_01	s120b
 messagefacility	v2_09_00	s120a
 qt				v5_15_9a
-TRACE			v3_17_10
+TRACE			v3_17_11
 cetmodules		v3_24_01	-	only_for_build
 end_product_list
 
