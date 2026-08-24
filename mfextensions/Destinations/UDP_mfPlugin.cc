@@ -258,49 +258,51 @@ void ELUDP::reconnect_()
 			exit(1);
 		}
 
-		if (multicast_out_addr_ == "0.0.0.0")
+		if (multicast_enabled_)
 		{
-			multicast_out_addr_.reserve(HOST_NAME_MAX);
-			sts = gethostname(&multicast_out_addr_[0], HOST_NAME_MAX);
-			if (sts < 0)
+			if (multicast_out_addr_ == "0.0.0.0")
 			{
-				TLOG(TLVL_ERROR) << "Could not get current hostname,  err=" << strerror(errno);
-				exit(1);
-			}
-		}
-
-		if (multicast_out_addr_ != "localhost")
-		{
-			struct in_addr addr;
-			sts = GetInterfaceForNetwork(multicast_out_addr_.c_str(), addr);
-			// sts = ResolveHost(multicast_out_addr_.c_str(), addr);
-			if (sts == -1)
-			{
-				TLOG(TLVL_ERROR) << "Unable to resolve multicast interface address, err=" << strerror(errno);
-				exit(1);
+				multicast_out_addr_.reserve(HOST_NAME_MAX);
+				sts = gethostname(&multicast_out_addr_[0], HOST_NAME_MAX);
+				if (sts < 0)
+				{
+					TLOG(TLVL_ERROR) << "Could not get current hostname,  err=" << strerror(errno);
+					exit(1);
+				}
 			}
 
-			if (setsockopt(message_socket_, IPPROTO_IP, IP_MULTICAST_IF, &addr, sizeof(addr)) == -1)
+			if (multicast_out_addr_ != "localhost")
 			{
-				TLOG(TLVL_ERROR) << "Cannot set outgoing interface, err=" << strerror(errno);
+				struct in_addr addr;
+				sts = GetInterfaceForNetwork(multicast_out_addr_.c_str(), addr);
+				if (sts == -1)
+				{
+					TLOG(TLVL_ERROR) << "Unable to resolve multicast interface address, err=" << strerror(errno);
+					exit(1);
+				}
+
+				if (setsockopt(message_socket_, IPPROTO_IP, IP_MULTICAST_IF, &addr, sizeof(addr)) == -1)
+				{
+					TLOG(TLVL_ERROR) << "Cannot set outgoing interface, err=" << strerror(errno);
+					exit(1);
+				}
+			}
+			int yes = 1;
+			if (setsockopt(message_socket_, SOL_SOCKET, SO_REUSEADDR, &yes, sizeof(yes)) < 0)
+			{
+				TLOG(TLVL_ERROR) << "Unable to enable port reuse on message socket, err=" << strerror(errno);
 				exit(1);
 			}
-		}
-		int yes = 1;
-		if (setsockopt(message_socket_, SOL_SOCKET, SO_REUSEADDR, &yes, sizeof(yes)) < 0)
-		{
-			TLOG(TLVL_ERROR) << "Unable to enable port reuse on message socket, err=" << strerror(errno);
-			exit(1);
-		}
-		if (setsockopt(message_socket_, IPPROTO_IP, IP_MULTICAST_LOOP, &yes, sizeof(yes)) < 0)
-		{
-			TLOG(TLVL_ERROR) << "Unable to enable multicast loopback on message socket, err=" << strerror(errno);
-			exit(1);
-		}
-		if (setsockopt(message_socket_, SOL_SOCKET, SO_BROADCAST, &yes, sizeof(yes)) == -1)
-		{
-			TLOG(TLVL_ERROR) << "Cannot set message socket to broadcast, err=" << strerror(errno);
-			exit(1);
+			if (setsockopt(message_socket_, IPPROTO_IP, IP_MULTICAST_LOOP, &yes, sizeof(yes)) < 0)
+			{
+				TLOG(TLVL_ERROR) << "Unable to enable multicast loopback on message socket, err=" << strerror(errno);
+				exit(1);
+			}
+			if (setsockopt(message_socket_, SOL_SOCKET, SO_BROADCAST, &yes, sizeof(yes)) == -1)
+			{
+				TLOG(TLVL_ERROR) << "Cannot set message socket to broadcast, err=" << strerror(errno);
+				exit(1);
+			}
 		}
 	}
 }
